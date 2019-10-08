@@ -1,0 +1,28 @@
+{% extends "rankings/base.html" %}
+
+{% block content %}
+	<table class="container">
+	<thead>
+		<tr>
+			<th><h1>Rank</h1></th>
+			<th><h1>Username</h1></th>
+			<th><h1>Score</h1></th>
+			<th><h1>Time</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for hacker in hackers %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{hacker.name}}</td>
+			<td>{{hacker.score}}</td>
+			<td>{{hacker.time}}</td>
+		</tr>
+		{% endfor %}
+		
+	</tbody>
+</table>
+{% endblock %}
+
+
+

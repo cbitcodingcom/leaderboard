@@ -1,0 +1,16 @@
+{% extends "rankings/base.html" %}
+
+{% block content %}
+	<h2>Confirmation</h2><br>
+
+	<div align="center">
+		<h2>The contest has {{count}} participants</h2>
+		<form action="/confirm" method="POST">{% csrf_token %}
+			<input type="hidden" name="contest_link" id="contest_link" value="{{contest_link}}"><br><br>
+			<input type="submit" name="" value="Confirm">
+		</form>
+	</div>
+{% endblock %}
+
+
+

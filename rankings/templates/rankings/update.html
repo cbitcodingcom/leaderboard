@@ -1,0 +1,15 @@
+{% extends "rankings/base.html" %}
+
+{% block content %}
+	<h2>Update page</h2><br>
+
+	<div align="center">
+		<form action="/update" method="POST">{% csrf_token %}
+			Link: <input type="text" name="contest_link" id="contest_link"><br><br>
+			<input type="submit" name="" value="Update">
+		</form>
+	</div>
+{% endblock %}
+
+
+
