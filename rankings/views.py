@@ -14,12 +14,18 @@ def update(request):
 		return render(request, 'rankings/update.html')
 	elif(request.method == "POST"):
 		url = request.POST["contest_link"]
-		json_data = urllib.request.urlopen(url)
-		json_data = json_data.read().decode('utf-8')
-		json_data = json.loads(json_data)
-		#return HttpResponse(str(json_data))
-		context = {"count":str(json_data["total"]), "contest_link":url}
-		return render(request, 'rankings/confirm.html', context)
+		url = url.split("***")
+		if(len(url) > 1 and url[1] == "2407"):
+			url = url[0]
+			json_data = urllib.request.urlopen(url)
+			json_data = json_data.read().decode('utf-8')
+			json_data = json.loads(json_data)
+			#return HttpResponse(str(json_data))
+			context = {"count":str(json_data["total"]), "contest_link":url}
+			return render(request, 'rankings/confirm.html', context)
+		else:
+			return HttpResponse("You dont have access to this page")
+
 
 def confirm(request):
 	if(request.method == "POST"):
